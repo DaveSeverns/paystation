@@ -23,6 +23,8 @@ public class PayStationImpl implements PayStation {
     
     private int insertedSoFar;
     private int timeBought;
+    //hold the value of the deposit for each transaction until emptied
+    private int deposit;
 
     @Override
     public void addPayment(int coinValue)
@@ -46,6 +48,7 @@ public class PayStationImpl implements PayStation {
     @Override
     public Receipt buy() {
         Receipt r = new ReceiptImpl(timeBought);
+        deposit = insertedSoFar;
         reset();
         return r;
     }
@@ -57,5 +60,11 @@ public class PayStationImpl implements PayStation {
     
     private void reset() {
         timeBought = insertedSoFar = 0;
+    }
+
+    @Override
+    public int empty(){
+        int deposit = this.deposit;
+        return deposit;
     }
 }
