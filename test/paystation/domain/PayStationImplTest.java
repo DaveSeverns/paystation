@@ -158,6 +158,6 @@ public class PayStationImplTest {
         ps.addPayment(25);
         ps.addPayment(5);
         ps.buy();
-        assertEquals("Nothing returned",30, ps.empty());
+        assertEquals("Nothing returned",40, ps.empty());
     }
 }
