@@ -160,4 +160,13 @@ public class PayStationImplTest {
         ps.buy();
         assertEquals("Nothing returned",40, ps.empty());
     }
+
+    @Test
+    public void shouldReturnTotalToZeroAfterEmpty()throws IllegalCoinException{
+        ps.addPayment(25);
+        ps.buy();
+        ps.empty();
+        assertEquals(0,ps.readDisplay());
+
+    }
 }
