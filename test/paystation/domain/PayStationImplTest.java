@@ -215,4 +215,14 @@ public class PayStationImplTest {
         //the isEmpty method returns true if map is empty test will pass in the map is empty after cancel
         assertTrue(testMap.isEmpty());
     }
+
+    @Test
+    public void shouldEmptyMapAfterBuy() throws IllegalCoinException{
+        ps.addPayment(25);
+        ps.addPayment(10);
+        ps.buy();
+        HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        //same as above should be empty as the buy calls reset which should clear the map
+        assertTrue(testMap.isEmpty());
+    }
 }
