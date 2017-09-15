@@ -193,4 +193,26 @@ public class PayStationImplTest {
         HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
         assertTrue(testMap.containsKey(5) && testMap.containsKey(10) && testMap.containsKey(25));
     }
+
+    @Test
+    public void shouldReturnNickelAndDimeNotQuarter() throws IllegalCoinException{
+        ps.addPayment(5);
+        ps.addPayment(10);
+
+        HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        //test passes for 25 and would fail if I put 5 or 10 since those keys are present
+        assertFalse(testMap.containsKey(25));
+    }
+
+    @Test
+    public void shouldEmptyMapAfterCancel() throws IllegalCoinException{
+        ps.addPayment(5);
+        ps.addPayment(10);
+        //calling cancel before the reference map is mad should leave that map as empty
+        //as cancel clears the existing map in the paystation object
+        ps.cancel();
+        HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        //the isEmpty method returns true if map is empty test will pass in the map is empty after cancel
+        assertTrue(testMap.isEmpty());
+    }
 }
