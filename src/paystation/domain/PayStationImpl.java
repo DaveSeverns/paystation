@@ -1,6 +1,7 @@
 package paystation.domain;
 
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,14 +29,28 @@ public class PayStationImpl implements PayStation {
     private int timeBought;
     //hold the value of the deposit for each transaction until emptied
     private  int deposit;
+    private HashMap<Integer,Integer> coinMap = new HashMap<>();
+    private int fiveValueCoin;
+    private int tenValueCoin;
+    private int twentyFiveValueCoin;
 
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
         switch (coinValue) {
-            case 5: break;
-            case 10: break;
-            case 25: break;
+            case 5: {
+                coinMap.put(5,++fiveValueCoin);
+                break;
+            }
+
+            case 10: {
+                coinMap.put(10,++tenValueCoin);
+                break;
+            }
+            case 25: {
+                coinMap.put(25,++twentyFiveValueCoin);
+                break;
+            }
             default:
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
@@ -58,12 +73,15 @@ public class PayStationImpl implements PayStation {
 
     @Override
     public Map<Integer,Integer> cancel() {
+        HashMap<Integer,Integer> tempMap = new HashMap<>();
+        tempMap.putAll(coinMap);
         reset();
-        return null;
+        return tempMap;
     }
     
     private void reset() {
         timeBought = insertedSoFar = 0;
+        coinMap.clear();
     }
 
     @Override

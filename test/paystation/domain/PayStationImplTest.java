@@ -15,6 +15,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.Before;
 
+import java.util.HashMap;
+
 
 public class PayStationImplTest {
 
@@ -173,6 +175,8 @@ public class PayStationImplTest {
     @Test
     public void shouldReturnOneCoinEntered() throws IllegalCoinException{
         ps.addPayment(25);
-        assertEquals(1,ps.cancel());
+        HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        assertTrue(testMap.containsValue(1));
+
     }
 }
