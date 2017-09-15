@@ -174,9 +174,23 @@ public class PayStationImplTest {
 
     @Test
     public void shouldReturnOneCoinEntered() throws IllegalCoinException{
+        //entering one coin to machine
         ps.addPayment(25);
+
+        //creating a reference to the map in paystation object to access values
         HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        //will test that map contains key for 25 and that the value one is mapped to it
         assertTrue(testMap.containsValue(1) && testMap.containsKey(25));
 
+    }
+
+    @Test
+    public void shouldReturnMultipleCoins() throws IllegalCoinException{
+        ps.addPayment(5);
+        ps.addPayment(10);
+        ps.addPayment(25);
+
+        HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
+        assertTrue(testMap.containsKey(5) && testMap.containsKey(10) && testMap.containsKey(25));
     }
 }
