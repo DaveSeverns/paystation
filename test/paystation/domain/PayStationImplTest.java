@@ -176,7 +176,7 @@ public class PayStationImplTest {
     public void shouldReturnOneCoinEntered() throws IllegalCoinException{
         ps.addPayment(25);
         HashMap<Integer,Integer> testMap = new HashMap<>(ps.cancel());
-        assertTrue(testMap.containsValue(1));
+        assertTrue(testMap.containsValue(1) && testMap.containsKey(25));
 
     }
 }
