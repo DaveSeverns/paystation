@@ -71,6 +71,11 @@ public class PayStationImpl implements PayStation {
         return r;
     }
 
+    /**
+     * cancel returns a map of the coins collected so far so the use
+     * gets back what they put in if they cancelled the transactions
+     * @return Map<Integer, Integer>
+     */
     @Override
     public Map<Integer,Integer> cancel() {
         HashMap<Integer,Integer> tempMap = new HashMap<>();
