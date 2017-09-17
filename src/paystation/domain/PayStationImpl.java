@@ -24,7 +24,7 @@ import java.util.Map;
  * purposes. For any commercial use, see http://www.baerbak.com/
  */
 public class PayStationImpl implements PayStation {
-    
+
     private int insertedSoFar;
     private int timeBought;
     //hold the value of the deposit for each transaction until emptied
@@ -88,5 +88,33 @@ public class PayStationImpl implements PayStation {
     public int empty(){
 
         return deposit;
+    }
+
+    public int getInsertedSoFar() {
+        return insertedSoFar;
+    }
+
+    public int getTimeBought() {
+        return timeBought;
+    }
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public HashMap<Integer, Integer> getCoinMap() {
+        return coinMap;
+    }
+
+    public int getFiveValueCoin() {
+        return fiveValueCoin;
+    }
+
+    public int getTenValueCoin() {
+        return tenValueCoin;
+    }
+
+    public int getTwentyFiveValueCoin() {
+        return twentyFiveValueCoin;
     }
 }
