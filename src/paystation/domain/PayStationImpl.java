@@ -34,6 +34,12 @@ public class PayStationImpl implements PayStation {
     private int tenValueCoin;
     private int twentyFiveValueCoin;
 
+    private RateStrategy rateStrategy;
+
+    public PayStationImpl(RateStrategy rateStrategy){
+        this.rateStrategy = rateStrategy;
+    }
+
     @Override
     public void addPayment(int coinValue)
             throws IllegalCoinException {
@@ -55,7 +61,7 @@ public class PayStationImpl implements PayStation {
                 throw new IllegalCoinException("Invalid coin: " + coinValue);
         }
         insertedSoFar += coinValue;
-        timeBought = insertedSoFar / 5 * 2;
+        timeBought = rateStrategy.calculateTime(insertedSoFar);
     }
 
     @Override
