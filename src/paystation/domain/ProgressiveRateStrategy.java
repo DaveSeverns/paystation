@@ -17,8 +17,6 @@ public class ProgressiveRateStrategy implements RateStrategy {
         {
             time = 120 + ((amount - 350) * 5/25);
         }
-
-
         return time;
     }
 }

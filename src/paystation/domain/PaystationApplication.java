@@ -43,6 +43,17 @@ public class PaystationApplication {
                 case 4:
                 {
                     PaystationAppManager.returnCoins(payStation);
+
+                    break;
+                }
+                case 5:
+                {
+                    System.out.println("To change rate strategy select (1) for Linear, (2) for Progressive, (3) for Alternating\n"+
+                                        "or 0 to cancel");
+
+                    payStation.cancel();
+                    payStation = PaystationAppManager.changeRateStrategy(keyboard.nextInt());
+                    break;
                 }
                 default:
                     break;
