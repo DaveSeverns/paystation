@@ -31,10 +31,16 @@ public class PaystationAppManager {
      */
     public static PayStationImpl changeRateStrategy(int strategySelection){
         if(strategySelection == 1){
+            System.out.println("Linear Strategy Selected");
             return new PayStationImpl(new LinearRateStrategy());
         }
         else if( strategySelection == 2){
+            System.out.println("Progressive Strategy Selected");
             return new PayStationImpl(new ProgressiveRateStrategy());
+        }
+        else if(strategySelection == 3){
+            System.out.println("Alternating Strategy Selected");
+            return new PayStationImpl(new AlternatingRateStrategy());
         }
         else
             return null;
