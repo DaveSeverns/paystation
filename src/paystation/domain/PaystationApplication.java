@@ -50,7 +50,7 @@ public class PaystationApplication {
                 {
                     System.out.println("To change rate strategy select (1) for Linear, (2) for Progressive, (3) for Alternating\n"+
                                         "or 0 to cancel");
-
+                    //Cancel any active payment that may have been going on before changing the rate strategy
                     payStation.cancel();
                     payStation = PaystationAppManager.changeRateStrategy(keyboard.nextInt());
                     break;
